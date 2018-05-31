@@ -60,7 +60,7 @@ def post_remove(request, pk):
     return redirect('post_list')
 
 def add_comment_to_post(request, pk):
-    post = get_objects_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -71,7 +71,7 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
-        
+
 @login_required
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
